@@ -1,32 +1,34 @@
 'use strict';
 
-const sliderEl = React.createElement;
+const { createElement } = React;
 
-const priceDisplayEl = React.createElement;
+let price = 0;
 
-function Slider() {
-  const [price, setPrice] = React.useState(0);
-
-  return sliderEl('input', {
-    type: 'range',
-    min: '1',
-    max: '30',
-    step: '1',
-
-    onChange: (ev) => setPrice(ev.target.value),
-  });
+function PricingComponent(props) {
+  console.log(props);
+  return createElement(
+    'div',
+    null,
+    createElement('input', {
+      type: 'range',
+      min: '8',
+      max: '36',
+      step: '4',
+      value: props.price,
+      onChange: handleChange,
+    }),
+    createElement('p', null, `$ ${props.price} `)
+  );
 }
 
-function Price() {
-  return priceDisplayEl('p', null, 'price state goes here');
+function handleChange(ev) {
+  ReactDOM.render(
+    createElement(PricingComponent, { price: ev.target.value }),
+    document.getElementById('root')
+  );
 }
 
-const sliderComponentContainer = document.querySelector(
-  '#slider_component_container'
+ReactDOM.render(
+  createElement(PricingComponent, { price: price }, null),
+  document.getElementById('root')
 );
-ReactDOM.render(sliderEl(Slider), sliderComponentContainer);
-
-const priceComponentContainer = document.querySelector(
-  '#price_component_container'
-);
-ReactDOM.render(priceDisplayEl(Price), priceComponentContainer);
