@@ -1,15 +1,16 @@
 'use strict';
 
-const { createElement } = React;
+const el = React.createElement;
+
+const root = document.getElementById('root');
 
 let price = 0;
 
 function PricingComponent(props) {
-  console.log(props);
-  return createElement(
+  return el(
     'div',
     null,
-    createElement('input', {
+    el('input', {
       type: 'range',
       min: '8',
       max: '36',
@@ -17,18 +18,12 @@ function PricingComponent(props) {
       value: props.price,
       onChange: handleChange,
     }),
-    createElement('p', null, `$ ${props.price} `)
+    el('p', null, `$ ${props.price} `)
   );
 }
 
 function handleChange(ev) {
-  ReactDOM.render(
-    createElement(PricingComponent, { price: ev.target.value }),
-    document.getElementById('root')
-  );
+  ReactDOM.render(el(PricingComponent, { price: ev.target.value }), root);
 }
 
-ReactDOM.render(
-  createElement(PricingComponent, { price: price }, null),
-  document.getElementById('root')
-);
+ReactDOM.render(el(PricingComponent, { price: price }, null), root);
