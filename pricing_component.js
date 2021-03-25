@@ -1,11 +1,12 @@
 'use strict';
 
 const el = React.createElement;
+const { useState, useEffect } = React;
 
 const root = document.getElementById('root');
 
 function Price(props) {
-  return el('p', null, props.price);
+  return el('p', null, `$${props.price}`);
 }
 
 function Slider(props) {
@@ -13,6 +14,7 @@ function Slider(props) {
     type: 'range',
     min: '8',
     max: '32',
+    step: '4',
     value: props.price,
     onChange: props.onChange,
   });
@@ -25,46 +27,51 @@ function Toggle(props) {
     el('input', {
       type: 'checkbox',
       className: 'checkbox',
+      value: props.isDiscount,
       onChange: props.onChange,
     }),
     el('span', { className: 'slider round' })
   );
 }
 
-class PricingComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      price: 8,
-    };
-    this.handlePriceChange = this.handlePriceChange.bind(this);
-    this.handleDiscountChange = this.handleDiscountChange.bind(this);
+function PricingComponent() {
+  const [price, setPrice] = useState(8);
+  const [isDiscount, setIsDiscount] = useState(false);
+  const [displayPrice, setDisplayPrice] = useState(price);
+
+  useEffect(() => {
+    if (isDiscount) {
+      setDisplayPrice(price - price * 0.25);
+    }
+
+    if (!isDiscount) {
+      setDisplayPrice(price);
+    }
+  }, [price, isDiscount]);
+
+  function handlePriceChange(ev) {
+    setPrice(ev.target.value);
   }
 
-  handlePriceChange(ev) {
-    this.setState({ price: ev.target.value });
+  function handleDiscountChange(ev) {
+    setIsDiscount(ev.target.checked);
   }
 
-  handleDiscountChange() {
-    this.setState({ price: this.state.price * 0.025 });
-  }
-
-  render() {
-    return el(
-      'div',
-      null,
-      el(Price, {
-        price: this.state.price,
-      }),
-      el(Slider, {
-        price: this.state.price,
-        onChange: this.handlePriceChange,
-      }),
-      el(Toggle, {
-        onChange: this.handleDiscountChange,
-      })
-    );
-  }
+  return el(
+    'div',
+    null,
+    el(Price, {
+      price: displayPrice,
+    }),
+    el(Slider, {
+      price: price,
+      onChange: handlePriceChange,
+    }),
+    el(Toggle, {
+      isDiscount: isDiscount,
+      onChange: handleDiscountChange,
+    })
+  );
 }
 
 ReactDOM.render(el(PricingComponent), root);
