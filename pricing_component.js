@@ -10,6 +10,8 @@ function PricingComponent(props) {
   return el(
     'div',
     null,
+
+    el('p', null, `$ ${props.price} `),
     el('input', {
       type: 'range',
       min: '8',
@@ -18,7 +20,17 @@ function PricingComponent(props) {
       value: props.price,
       onChange: handleChange,
     }),
-    el('p', null, `$ ${props.price} `)
+    el(
+      'label',
+      { className: 'toggle' },
+      el('input', {
+        type: 'checkbox',
+        className: 'checkbox',
+      }),
+      el('span', {
+        className: 'slider round',
+      })
+    )
   );
 }
 
