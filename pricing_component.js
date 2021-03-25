@@ -4,38 +4,67 @@ const el = React.createElement;
 
 const root = document.getElementById('root');
 
-let price = 0;
+function Price(props) {
+  return el('p', null, props.price);
+}
 
-function PricingComponent(props) {
+function Slider(props) {
+  return el('input', {
+    type: 'range',
+    min: '8',
+    max: '32',
+    value: props.price,
+    onChange: props.onChange,
+  });
+}
+
+function Toggle(props) {
   return el(
-    'div',
-    null,
-
-    el('p', null, `$ ${props.price} `),
+    'label',
+    { className: 'toggle' },
     el('input', {
-      type: 'range',
-      min: '8',
-      max: '36',
-      step: '4',
-      value: props.price,
-      onChange: handleChange,
+      type: 'checkbox',
+      className: 'checkbox',
+      onChange: props.onChange,
     }),
-    el(
-      'label',
-      { className: 'toggle' },
-      el('input', {
-        type: 'checkbox',
-        className: 'checkbox',
-      }),
-      el('span', {
-        className: 'slider round',
-      })
-    )
+    el('span', { className: 'slider round' })
   );
 }
 
-function handleChange(ev) {
-  ReactDOM.render(el(PricingComponent, { price: ev.target.value }), root);
+class PricingComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      price: 8,
+    };
+    this.handlePriceChange = this.handlePriceChange.bind(this);
+    this.handleDiscountChange = this.handleDiscountChange.bind(this);
+  }
+
+  handlePriceChange(ev) {
+    this.setState({ price: ev.target.value });
+  }
+
+  handleDiscountChange() {
+    this.setState({ price: this.state.price * 0.025 });
+  }
+
+  render() {
+    return el(
+      'div',
+      null,
+      el(Price, {
+        price: this.state.price,
+      }),
+      el(Slider, {
+        price: this.state.price,
+        onChange: this.handlePriceChange,
+      }),
+      el(Toggle, {
+        onChange: this.handleDiscountChange,
+      })
+    );
+  }
 }
 
-ReactDOM.render(el(PricingComponent, { price: price }, null), root);
+ReactDOM.render(el(PricingComponent), root);
