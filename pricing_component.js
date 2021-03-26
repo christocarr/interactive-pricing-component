@@ -5,8 +5,22 @@ const { useState, useEffect } = React;
 
 const root = document.getElementById('root');
 
+function PageViews(props) {
+  return el(
+    'p',
+
+    { className: 'page_views' },
+    `${props.pageviews}k page views`
+  );
+}
+
 function Price(props) {
-  return el('p', null, `$${props.price}`);
+  return el(
+    'p',
+    null,
+    el('span', { className: 'price' }, `$${props.price}`),
+    ' / month'
+  );
 }
 
 function Slider(props) {
@@ -22,15 +36,34 @@ function Slider(props) {
 
 function Toggle(props) {
   return el(
-    'label',
-    { className: 'toggle' },
-    el('input', {
-      type: 'checkbox',
-      className: 'checkbox',
-      value: props.isDiscount,
-      onChange: props.onChange,
-    }),
-    el('span', { className: 'slider round' })
+    'div',
+
+    { className: 'discount_toggle' },
+    el('p', null, 'Monthly Billing'),
+    el(
+      'label',
+      { className: 'toggle' },
+      el('input', {
+        type: 'checkbox',
+        className: 'checkbox',
+        value: props.isDiscount,
+        onChange: props.onChange,
+      }),
+      el('span', { className: 'slider round' })
+    ),
+    el('p', null, 'Yearly Billing'),
+    el('p', null, '-25%')
+  );
+}
+
+function Footer() {
+  return el(
+    'div',
+    { className: 'pricing_component_footer' },
+    el('p', null, 'Unlimited websites'),
+    el('p', null, '100% data ownership'),
+    el('p', null, 'Email reports'),
+    el('button', null, 'Start my trial')
   );
 }
 
@@ -38,6 +71,7 @@ function PricingComponent() {
   const [price, setPrice] = useState(8);
   const [isDiscount, setIsDiscount] = useState(false);
   const [displayPrice, setDisplayPrice] = useState(price);
+  const [pageviews, setPageviews] = useState(1);
 
   useEffect(() => {
     if (isDiscount) {
@@ -59,18 +93,20 @@ function PricingComponent() {
 
   return el(
     'div',
-    null,
-    el(Price, {
-      price: displayPrice,
-    }),
+    { className: 'pricing_component_wrapper' },
+    el(PageViews, { pageviews: pageviews }),
     el(Slider, {
       price: price,
       onChange: handlePriceChange,
     }),
+    el(Price, {
+      price: displayPrice,
+    }),
     el(Toggle, {
       isDiscount: isDiscount,
       onChange: handleDiscountChange,
-    })
+    }),
+    el(Footer)
   );
 }
 
