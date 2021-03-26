@@ -94,18 +94,22 @@ function PricingComponent() {
   return el(
     'div',
     { className: 'pricing_component_wrapper' },
-    el(PageViews, { pageviews: pageviews }),
-    el(Slider, {
-      price: price,
-      onChange: handlePriceChange,
-    }),
-    el(Price, {
-      price: displayPrice,
-    }),
-    el(Toggle, {
-      isDiscount: isDiscount,
-      onChange: handleDiscountChange,
-    }),
+    el(
+      'div',
+      { className: 'price_settings_container' },
+      el(PageViews, { pageviews: pageviews }),
+      el(Slider, {
+        price: price,
+        onChange: handlePriceChange,
+      }),
+      el(Price, {
+        price: displayPrice,
+      }),
+      el(Toggle, {
+        isDiscount: isDiscount,
+        nChange: handleDiscountChange,
+      })
+    ),
     el(Footer)
   );
 }
