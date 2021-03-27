@@ -17,9 +17,9 @@ function PageViews(props) {
 function Price(props) {
   return el(
     'p',
-    null,
-    el('span', { className: 'price' }, `$${props.price}`),
-    `/ ${props.isDiscount ? 'year' : 'month'}`
+    { className: 'price_display' },
+    el('span', { className: 'price' }, `$${props.price}.00`),
+    ` / ${props.isDiscount ? 'year' : 'month'}`
   );
 }
 
