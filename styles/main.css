@@ -36,6 +36,10 @@
   --slider-bg-active: hsl(174, 77%, 80%);
   --slider-bg-unactive: hsl(224, 65%, 95%);
   --slider-thumb-bg: hsl(174, 86%, 45%);
+  --toggle-bg: hsl(223, 50%, 87%);
+  --active-toggle-bg: hsl(174, 77%, 80%);
+  --discount-text: hsl(15, 100%, 70%);
+  --discount-bg: hsl(14, 92%, 95%);
   font-size: 15px;
 }
 
@@ -97,6 +101,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 320px;
   background-color: white;
   margin-bottom: 10em;
   box-shadow: 0px 12px 12px -2px rgba(133, 143, 173, 0.2);
@@ -112,7 +117,8 @@ header {
 
 .price_settings_container,
 .pricing_component_footer {
-  padding: 2em 1em;
+  width: 100%;
+  padding: 2.5em 1.5em;
 }
 
 /*-------PAGEVIEWS DISPLAY-------*/
@@ -191,13 +197,16 @@ input[type='range']::-moz-range-thumb {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  width: 100%;
+  font-size: 0.8rem;
+  margin-right: -40px;
 }
 
 .toggle {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 46px;
+  height: 22px;
 }
 
 /*hide default HTML*/
@@ -214,7 +223,7 @@ input[type='range']::-moz-range-thumb {
   right: 0;
   bottom: 0;
   cursor: pointer;
-  background-color: #ccc;
+  background-color: hsl(223, 50%, 87%);
   transition: 0.4s;
 }
 
@@ -223,26 +232,37 @@ input[type='range']::-moz-range-thumb {
   left: 4px;
   bottom: 4px;
   content: '';
-  width: 26px;
-  height: 26px;
+  width: 14px;
+  height: 14px;
   background-color: white;
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: hsl(174, 77%, 80%);
 }
 
 input:checked + .slider::before {
-  transform: translateX(26px);
+  transform: translateX(24px);
 }
 
 .slider.round {
-  border-radius: 34px;
+  border-radius: 32px;
 }
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+/* discount text */
+.discount_detail {
+  font-size: 0.7rem;
+  color: var(--discount-text);
+  background-color: var(--discount-bg);
+  padding: 0.2em 0.9em;
+  margin-left: 0.5em;
+  border-radius: 15px;
+  overflow: auto;
 }
 
 /* pricing component footer */

@@ -65,8 +65,12 @@ function Toggle(props) {
       }),
       el('span', { className: 'slider round' })
     ),
-    el('p', null, 'Yearly Billing'),
-    el('p', null, '-25%')
+    el(
+      'p',
+      null,
+      'Yearly Billing',
+      el('span', { className: 'discount_detail' }, '-25%')
+    )
   );
 }
 
