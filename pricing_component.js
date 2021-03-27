@@ -19,7 +19,7 @@ function Price(props) {
     'p',
     null,
     el('span', { className: 'price' }, `$${props.price}`),
-    ' / month'
+    `/ ${props.isDiscount ? 'year' : 'month'}`
   );
 }
 
@@ -140,6 +140,7 @@ function PricingComponent() {
         onChange: handlePageviewsChange,
       }),
       el(Price, {
+        isDiscount: isDiscount,
         price: displayPrice,
       }),
       el(Toggle, {
