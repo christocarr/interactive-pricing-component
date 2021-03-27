@@ -33,6 +33,9 @@
   --bold-text-color: hsl(227, 35%, 25%);
   --CTA-bg-color: hsl(227, 35%, 25%);
   --light-grey-blue: hsl(224, 65%, 95%);
+  --slider-bg-active: hsl(174, 77%, 80%);
+  --slider-bg-unactive: hsl(224, 65%, 95%);
+  --slider-thumb-bg: hsl(174, 86%, 45%);
   font-size: 15px;
 }
 
@@ -110,6 +113,53 @@ header {
 .price_settings_container,
 .pricing_component_footer {
   padding: 2em 1em;
+}
+
+/*-----------SLIDER-------------*/
+.slider_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 1em;
+}
+
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background: var(--slider-bg-unactive);
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  transform: translateY(-15%);
+  border-radius: 50%;
+  background-color: var(--slider-thumb-bg);
+  background-image: url('../images/icon-slider.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: fill;
+  cursor: pointer;
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 40px;
+  height: 40px;
+  transform: translateY(-15%);
+  border-radius: 50%;
+  background: var(--slider-thumb-bg);
+  background-image: url('../images/icon-slider.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: fill;
+  cursor: pointer;
 }
 
 /*-----------PRICE DISPLAY-------------*/

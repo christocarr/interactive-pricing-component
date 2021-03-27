@@ -26,7 +26,7 @@ function Price(props) {
 function Slider(props) {
   return el(
     'div',
-    null,
+    { className: 'slider_container' },
     el('input', {
       type: 'range',
       min: '0',
