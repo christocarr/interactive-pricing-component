@@ -78,10 +78,20 @@ function Footer() {
   return el(
     'div',
     { className: 'pricing_component_footer' },
-    el('p', null, 'Unlimited websites'),
-    el('p', null, '100% data ownership'),
-    el('p', null, 'Email reports'),
-    el('button', null, 'Start my trial')
+    el(
+      'p',
+      null,
+      el('span', { className: 'check_icon' }),
+      'Unlimited websites'
+    ),
+    el(
+      'p',
+      null,
+      el('span', { className: 'check_icon' }),
+      '100% data ownership'
+    ),
+    el('p', null, el('span', { className: 'check_icon' }), 'Email reports'),
+    el('button', { className: 'start_trial_button' }, 'Start my trial')
   );
 }
 
