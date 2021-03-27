@@ -10,7 +10,7 @@ function PageViews(props) {
     'p',
 
     { className: 'page_views' },
-    `${props.pageviews}k page views`
+    `${props.pageviews} pageviews`
   );
 }
 
@@ -24,14 +24,28 @@ function Price(props) {
 }
 
 function Slider(props) {
-  return el('input', {
-    type: 'range',
-    min: '8',
-    max: '32',
-    step: '4',
-    value: props.price,
-    onChange: props.onChange,
-  });
+  return el(
+    'div',
+    null,
+    el('input', {
+      type: 'range',
+      min: '0',
+      max: '4',
+      step: '1',
+      list: 'tickmarks',
+      value: props.pageviewsArr.indexOf[props.pageviews],
+      onChange: props.onChange,
+    }),
+    el(
+      'datalist',
+      {
+        id: 'tickmarks',
+      },
+      props.pageviewsArr.map((item, index) => {
+        return el('option', { key: index }, index);
+      })
+    )
+  );
 }
 
 function Toggle(props) {
@@ -68,10 +82,12 @@ function Footer() {
 }
 
 function PricingComponent() {
-  const [price, setPrice] = useState(8);
+  const [price, setPrice] = useState(16);
+  const [pageviews, setPageviews] = useState('100K');
   const [isDiscount, setIsDiscount] = useState(false);
   const [displayPrice, setDisplayPrice] = useState(price);
-  const [pageviews, setPageviews] = useState(1);
+
+  const pageviewsArr = ['10K', '50K', '100K', '500K', '1M'];
 
   useEffect(() => {
     if (isDiscount) {
@@ -83,8 +99,28 @@ function PricingComponent() {
     }
   }, [price, isDiscount]);
 
-  function handlePriceChange(ev) {
-    setPrice(ev.target.value);
+  function handlePageviewsChange(ev) {
+    const value = ev.target.value;
+    setPageviews(pageviewsArr[value]);
+    switch (value) {
+      case '0':
+        setPrice(8);
+        break;
+      case '1':
+        setPrice(12);
+        break;
+      case '2':
+        setPrice(16);
+        break;
+      case '3':
+        setPrice(24);
+        break;
+      case '4':
+        setPrice(32);
+        break;
+      default:
+        setPrice(16);
+    }
   }
 
   function handleDiscountChange(ev) {
@@ -99,15 +135,16 @@ function PricingComponent() {
       { className: 'price_settings_container' },
       el(PageViews, { pageviews: pageviews }),
       el(Slider, {
-        price: price,
-        onChange: handlePriceChange,
+        pageviewsArr: pageviewsArr,
+        pageviews: pageviews,
+        onChange: handlePageviewsChange,
       }),
       el(Price, {
         price: displayPrice,
       }),
       el(Toggle, {
         isDiscount: isDiscount,
-        nChange: handleDiscountChange,
+        onChange: handleDiscountChange,
       })
     ),
     el(Footer)
