@@ -29,7 +29,7 @@
 }
 
 :root {
-  --text-color: #858fad;
+  --text-color: hsl(225, 20%, 60%);
   --bold-text-color: hsl(227, 35%, 25%);
   --CTA-bg-color: hsl(227, 35%, 25%);
   --light-grey-blue: hsl(224, 65%, 95%);
@@ -42,6 +42,8 @@
   --discount-bg: hsl(14, 92%, 95%);
   --button-text: hsl(226, 100%, 87%);
   --button-bg: hsl(227, 35%, 25%);
+  --button-hover-text: white;
+  /* --button-hover-bg: hsl(227, 18%, 46%); */
   font-size: 15px;
 }
 
@@ -168,6 +170,17 @@ input[type='range']::-webkit-slider-thumb {
   cursor: pointer;
 }
 
+input[type='range']::-webkit-slider-thumb:hover,
+input[type='range']::-webkit-slider-thumb:focus {
+  -webkit-box-shadow: 0px 14px 20px -8px rgba(16, 213, 194, 0.8);
+  box-shadow: 0px 14px 20px -8px rgba(16, 213, 194, 0.8);
+}
+
+input[type='range']:focus > input[type='range']::-webkit-slider-thumb {
+  -webkit-box-shadow: 0px 14px 20px -8px rgba(16, 213, 194, 0.8);
+  box-shadow: 0px 14px 20px -8px rgba(16, 213, 194, 0.8);
+}
+
 input[type='range']::-moz-range-thumb {
   width: 40px;
   height: 40px;
@@ -179,6 +192,11 @@ input[type='range']::-moz-range-thumb {
   background-repeat: no-repeat;
   background-size: fill;
   cursor: pointer;
+}
+
+input[type='range']::-moz-range-thumb:hover,
+input[type='range']::-moz-range-thumb:focus {
+  box-shadow: 0px 14px 20px -8px rgba(16, 213, 194, 0.8);
 }
 
 /*---------PRICE DISPLAY---------*/
@@ -312,6 +330,13 @@ span.check_icon {
   border-style: none;
   border-radius: 50px;
   cursor: pointer;
+  transition: 0.3s ease-in;
+}
+
+.start_trial_button:hover,
+.start_trial_button:focus {
+  color: var(--button-hover-text);
+  opacity: 0.8;
 }
 
 /*---------------------------------------
