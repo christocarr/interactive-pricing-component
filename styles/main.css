@@ -161,7 +161,9 @@ input[type='range']::-webkit-slider-thumb {
   width: 40px;
   height: 40px;
   transform: translateY(-15%);
+  -webkit-transform: translateY(-15%);
   border-radius: 50%;
+  border-style: none;
   background-color: var(--slider-thumb-bg);
   background-image: url('../images/icon-slider.svg');
   background-position: center;
@@ -182,10 +184,12 @@ input[type='range']:focus > input[type='range']::-webkit-slider-thumb {
 }
 
 input[type='range']::-moz-range-thumb {
+  -moz-appearance: none;
   width: 40px;
   height: 40px;
-  transform: translateY(-15%);
+  /* -moz-transform: translateY(-15%); */
   border-radius: 50%;
+  border-style: none;
   background: var(--slider-thumb-bg);
   background-image: url('../images/icon-slider.svg');
   background-position: center;
