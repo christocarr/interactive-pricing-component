@@ -269,6 +269,10 @@ input:checked + .slider::before {
   overflow: auto;
 }
 
+.discount_detail::before {
+  content: '-';
+}
+
 /* pricing component footer */
 .pricing_component_footer {
   display: flex;
@@ -308,4 +312,87 @@ span.check_icon {
   border-style: none;
   border-radius: 50px;
   cursor: pointer;
+}
+
+/*---------------------------------------
+---------------MEDIA QUERIES------------
+----------------------------------------*/
+
+@media (min-width: 1440px) {
+  header {
+    margin: 3em 0;
+  }
+
+  .header_heading {
+    font-size: 2rem;
+  }
+
+  .header_details {
+    flex-direction: row;
+    font-size: 1.1rem;
+  }
+
+  .header_details p:nth-child(odd) {
+    margin-right: 0.4em;
+  }
+
+  .pricing_component_wrapper {
+    width: 550px;
+  }
+
+  .price_settings_container {
+    position: relative;
+    height: 270px;
+    padding: 3em 3em;
+  }
+
+  .page_views {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 4em;
+    padding-left: inherit;
+  }
+
+  .price_display {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-top: inherit;
+    padding-right: inherit;
+  }
+
+  .price {
+    font-size: 2.5rem;
+  }
+
+  .slider_container {
+    margin-top: 3em;
+  }
+
+  .discount_toggle {
+    width: 70%;
+    position: absolute;
+    bottom: 0;
+    right: 75px;
+    padding-bottom: inherit;
+  }
+
+  .discount_detail::after {
+    content: ' discount';
+  }
+  .discount_detail::before {
+    content: '';
+  }
+
+  .pricing_component_footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5em 3em;
+  }
+
+  .pricing_component_footer p:last-of-type {
+    margin-bottom: 0;
+  }
 }
