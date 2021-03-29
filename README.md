@@ -2,6 +2,8 @@
 
 This is a solution to the [Interactive pricing component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-pricing-component-t0m8PIyY8). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2be9b869-c9be-47c5-8bf4-7546f6e1399f/deploy-status)](https://app.netlify.com/sites/cc-pricing-component/deploys)
+
 ## Table of contents
 
 - [Overview](#overview)
@@ -28,7 +30,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![screenshot of site](https://imgur.com/nEdwunq)
 
 ### Links
 
