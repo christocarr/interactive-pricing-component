@@ -161,7 +161,7 @@ input[type='range']::-webkit-slider-thumb {
   width: 40px;
   height: 40px;
   transform: translateY(-15%);
-  -webkit-transform: translateY(-15%);
+  -webkit-transform: -webkit-translateY(0%);
   border-radius: 50%;
   border-style: none;
   background-color: var(--slider-thumb-bg);
@@ -425,3 +425,12 @@ span.check_icon {
     margin-bottom: 0;
   }
 }
+
+
+/* target safari browsers to remove the translate y positioning */
+@media not all and (min-resolution: .001dpcm) { @media {
+  input[type='range']::-webkit-slider-thumb {
+    transform: translateY(0);
+    -webkit-transform: translateY(0)
+  }
+}}   
