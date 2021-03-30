@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Screenshot
 
-![screenshot of site](https://imgur.com/gallery/HIrl8J3)
+![screenshot of finished challenge](./screenshot.jpg?raw=true)
 
 ### Links
 
