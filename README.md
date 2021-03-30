@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Screenshot
 
-![screenshot of finished challenge](./screenshot.jpg?raw=true)
+![screenshot of finished challenge](./screenshot.JPG?raw=true)
 
 ### Links
 
