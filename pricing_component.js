@@ -28,6 +28,7 @@ function Slider(props) {
     'div',
     { className: 'slider_container' },
     el('input', {
+      id: 'sliderComponent',
       type: 'range',
       min: '0',
       max: '4',
@@ -58,6 +59,7 @@ function Toggle(props) {
       'label',
       { className: 'toggle' },
       el('input', {
+        id: 'discountToggle',
         type: 'checkbox',
         className: 'checkbox',
         value: props.isDiscount,
