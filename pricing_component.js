@@ -23,7 +23,15 @@ function Price(props) {
   );
 }
 
-function Slider(props) {
+function Slider({ pageviews, pageviewsArr, onChange }) {
+  console.log(pageviews, pageviewsArr);
+
+  const [value, setValue] = useState('');
+
+  useEffect(() => {
+    setValue(pageviewsArr.indexOf(pageviews));
+  }, [pageviews]);
+
   return el(
     'div',
     { className: 'slider_container' },
@@ -34,15 +42,15 @@ function Slider(props) {
       max: '4',
       step: '1',
       list: 'tickmarks',
-      value: props.pageviewsArr.indexOf[props.pageviews],
-      onChange: props.onChange,
+      value: value,
+      onInput: onChange,
     }),
     el(
       'datalist',
       {
         id: 'tickmarks',
       },
-      props.pageviewsArr.map((item, index) => {
+      pageviewsArr.map((item, index) => {
         return el('option', { key: index }, index);
       })
     )
@@ -102,12 +110,12 @@ function Footer() {
 }
 
 function PricingComponent() {
+  const pageviewsArr = ['10K', '50K', '100K', '500K', '1M'];
+
   const [price, setPrice] = useState(16);
   const [pageviews, setPageviews] = useState('100K');
   const [isDiscount, setIsDiscount] = useState(false);
   const [displayPrice, setDisplayPrice] = useState(price);
-
-  const pageviewsArr = ['10K', '50K', '100K', '500K', '1M'];
 
   useEffect(() => {
     if (isDiscount) {
