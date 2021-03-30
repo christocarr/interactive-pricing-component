@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Screenshot
 
-![screenshot of site](https://imgur.com/nEdwunq)
+![screenshot of site](https://imgur.com/TIqfipH)
 
 ### Links
 
