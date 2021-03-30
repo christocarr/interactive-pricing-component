@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![screenshot of site](https://imgur.com/gallery/HIrl8J3)
 
 ### Links
 
