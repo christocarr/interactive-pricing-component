@@ -24,8 +24,6 @@ function Price(props) {
 }
 
 function Slider({ pageviews, pageviewsArr, onChange }) {
-  console.log(pageviews, pageviewsArr);
-
   const [value, setValue] = useState('');
 
   useEffect(() => {
